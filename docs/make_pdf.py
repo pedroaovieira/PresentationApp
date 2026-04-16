@@ -1,13 +1,34 @@
 #!/usr/bin/env python3
 """Convert USER_MANUAL.md to USER_MANUAL.pdf via weasyprint."""
 
-import os, re, base64
+import os, re, base64, io
+from PIL import Image as PILImage
 
 DOCS = os.path.dirname(os.path.abspath(__file__))
 
 # ── Read markdown ────────────────────────────────────────────────────────────
 with open(os.path.join(DOCS, "USER_MANUAL.md"), encoding="utf-8") as f:
     md = f.read()
+
+# ── Image embed helper ───────────────────────────────────────────────────────
+# Phone screenshots are portrait (390×844). At 96 dpi, 1cm ≈ 37.8 px.
+# We resize to MAX_IMG_PX wide so each image is ≤ ~4 cm — fits 3 side-by-side.
+MAX_IMG_PX = 150          # for table cells
+MAX_IMG_FLOAT_PX = 140   # for standalone floated screenshots
+
+def embed_img_path(src, alt="", max_px=MAX_IMG_PX, css_class="screenshot"):
+    path = os.path.join(DOCS, src)
+    if not os.path.exists(path):
+        return f'<img alt="{alt}">'
+    img = PILImage.open(path).convert("RGB")
+    if img.width > max_px:
+        h = int(img.height * max_px / img.width)
+        img = img.resize((max_px, h), PILImage.LANCZOS)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG", optimize=True)
+    data = base64.b64encode(buf.getvalue()).decode()
+    return (f'<img src="data:image/png;base64,{data}" alt="{alt}" '
+            f'class="{css_class}">')
 
 # ── Minimal markdown → HTML converter ────────────────────────────────────────
 def md_to_html(text):
@@ -16,7 +37,6 @@ def md_to_html(text):
     in_table = False
     in_code = False
     in_ul = False
-    ol_counter = {}
 
     def flush_ul():
         nonlocal in_ul
@@ -52,14 +72,13 @@ def md_to_html(text):
                 html_lines.append('<table>')
                 in_table = True
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
-            # Separator row
+            # Separator row — skip, but mark next rows as body
             if all(re.match(r'^[-: ]+$', c) for c in cells):
                 i += 1
                 continue
-            # Header vs body: check if next line is separator
-            next_is_sep = (i + 1 < len(lines) and "|" in lines[i+1] and
+            next_is_sep = (i + 1 < len(lines) and "|" in lines[i + 1] and
                            all(re.match(r'^[-: ]+$', c.strip())
-                               for c in lines[i+1].strip().strip("|").split("|")))
+                               for c in lines[i + 1].strip().strip("|").split("|")))
             tag = "th" if next_is_sep else "td"
             row = "".join(f"<{tag}>{inline(c)}</{tag}>" for c in cells)
             html_lines.append(f"<tr>{row}</tr>")
@@ -72,7 +91,6 @@ def md_to_html(text):
         # Blank line
         if not line.strip():
             flush_ul()
-            html_lines.append("<p></p>")
             i += 1
             continue
 
@@ -118,9 +136,16 @@ def md_to_html(text):
             i += 1
             continue
 
-        # Paragraph
+        # Paragraph — detect image-only lines → float right
         flush_ul()
-        html_lines.append(f"<p>{inline(line)}</p>")
+        rendered = inline(line)
+        stripped = rendered.strip()
+        if stripped.startswith('<img ') and stripped.endswith('>') and stripped.count('<img ') == 1:
+            # Solo screenshot: wrap in a float figure
+            rendered = rendered.replace('class="screenshot"', 'class="screenshot screenshot-float"')
+            html_lines.append(f'<figure class="screenshot-figure">{rendered}</figure>')
+        else:
+            html_lines.append(f"<p>{rendered}</p>")
         i += 1
 
     if in_table:
@@ -130,22 +155,33 @@ def md_to_html(text):
         html_lines.append("</code></pre>")
     return "\n".join(html_lines)
 
+
 def inline(text):
-    # Images with local path → embed as base64
-    def embed_img(m):
-        alt, src, w = m.group(1), m.group(2), m.group(3) or "200"
-        path = os.path.join(DOCS, src)
-        if os.path.exists(path):
-            with open(path, "rb") as f:
-                data = base64.b64encode(f.read()).decode()
-            return f'<img src="data:image/png;base64,{data}" width="{w}" alt="{alt}" style="border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.2);">'
+    # HTML <img> tags  (e.g. from markdown raw HTML)
+    def replace_html_img(m):
+        src = m.group(1)
+        alt = m.group(2) or ""
+        if src.startswith("screenshots/"):
+            return embed_img_path(src, alt, max_px=MAX_IMG_FLOAT_PX)
         return m.group(0)
 
-    text = re.sub(r'<img src="(screenshots/[^"]+)" width="(\d+)" alt="([^"]*)">',
-                  lambda m: embed_img(type('M', (), {'group': lambda self, n: [None, m.group(3), m.group(1), m.group(2)][n]})()),
-                  text)
-    text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)(?:\{width=(\d+)\})?',
-                  lambda m: embed_img(m), text)
+    text = re.sub(
+        r'<img\s+src="([^"]+)"[^>]*alt="([^"]*)"[^>]*>',
+        replace_html_img, text)
+    text = re.sub(
+        r'<img\s+alt="([^"]*)"[^>]*src="([^"]+)"[^>]*>',
+        lambda m: replace_html_img(type('M', (), {
+            'group': lambda self, n: [None, m.group(2), m.group(1)][n]
+        })()), text)
+
+    # Markdown ![]() images
+    def replace_md_img(m):
+        alt, src = m.group(1), m.group(2)
+        if src.startswith("screenshots/"):
+            return embed_img_path(src, alt, max_px=MAX_IMG_FLOAT_PX)
+        return m.group(0)
+
+    text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', replace_md_img, text)
 
     # Bold + italic
     text = re.sub(r'\*\*\*(.+?)\*\*\*', r'<strong><em>\1</em></strong>', text)
@@ -157,9 +193,10 @@ def inline(text):
     text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', text)
     return text
 
+
 body = md_to_html(md)
 
-# ── CSS ─────────────────────────────────────────────────────────────────────
+# ── CSS ──────────────────────────────────────────────────────────────────────
 css = """
 @page {
     size: A4;
@@ -168,13 +205,22 @@ css = """
 body {
     font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
     font-size: 10.5pt;
-    line-height: 1.65;
+    line-height: 1.6;
     color: #212121;
 }
-h1 { font-size: 22pt; color: #1b5e20; border-bottom: 3px solid #2e7d32; padding-bottom: 6pt; margin-top: 0; }
-h2 { font-size: 15pt; color: #2e7d32; border-bottom: 1px solid #a5d6a7; padding-bottom: 3pt; margin-top: 24pt; }
-h3 { font-size: 12pt; color: #37474f; margin-top: 18pt; }
-h4 { font-size: 11pt; color: #546e7a; }
+h1 {
+    font-size: 22pt; color: #1b5e20;
+    border-bottom: 3px solid #2e7d32;
+    padding-bottom: 6pt; margin-top: 0; margin-bottom: 4pt;
+}
+h2 {
+    font-size: 15pt; color: #2e7d32;
+    border-bottom: 1px solid #a5d6a7;
+    padding-bottom: 3pt; margin-top: 20pt; margin-bottom: 6pt;
+}
+h3 { font-size: 12pt; color: #37474f; margin-top: 14pt; margin-bottom: 4pt; }
+h4 { font-size: 11pt; color: #546e7a; margin-top: 10pt; margin-bottom: 2pt; }
+p { margin: 4pt 0; }
 code {
     background: #f5f5f5;
     border: 1px solid #e0e0e0;
@@ -187,51 +233,78 @@ pre {
     background: #263238;
     color: #cfd8dc;
     border-radius: 6px;
-    padding: 12px 16px;
-    overflow: auto;
+    padding: 10px 14px;
     font-size: 9pt;
     line-height: 1.5;
+    margin: 8pt 0;
 }
-pre code {
-    background: none;
-    border: none;
-    padding: 0;
-    color: inherit;
-}
+pre code { background: none; border: none; padding: 0; color: inherit; }
+
+/* ── Tables ── */
 table {
     border-collapse: collapse;
     width: 100%;
-    margin: 12pt 0;
+    margin: 8pt 0;
     font-size: 10pt;
+    table-layout: fixed;   /* equal-width columns, prevents overflow */
 }
 th {
     background: #2e7d32;
     color: white;
-    padding: 7pt 10pt;
-    text-align: left;
+    padding: 5pt 8pt;
+    text-align: center;
     font-weight: bold;
+    font-size: 10pt;
 }
 td {
-    padding: 6pt 10pt;
+    padding: 5pt 8pt;
     border-bottom: 1px solid #e0e0e0;
     vertical-align: top;
+    word-wrap: break-word;
 }
+td:first-child { font-weight: 500; }
 tr:nth-child(even) td { background: #f9fbe7; }
+
+/* ── Screenshots ── */
+img.screenshot {
+    display: block;
+    margin: 4pt auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    max-width: 100%;
+    height: auto;
+}
+
+/* Standalone floated screenshot */
+figure.screenshot-figure {
+    float: right;
+    clear: right;
+    margin: 0 0 10pt 16pt;
+    padding: 0;
+}
+figure.screenshot-figure img.screenshot {
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* Clear floats after each major section */
+h2, h3, h4 { clear: both; }
+hr { clear: both; border: none; border-top: 1px solid #e0e0e0; margin: 14pt 0; }
+
 blockquote {
     border-left: 4px solid #a5d6a7;
     background: #f1f8e9;
-    margin: 12pt 0;
-    padding: 8pt 14pt;
+    margin: 8pt 0;
+    padding: 6pt 12pt;
     border-radius: 0 6px 6px 0;
     font-style: italic;
     color: #37474f;
+    clear: both;
 }
-hr { border: none; border-top: 1px solid #e0e0e0; margin: 18pt 0; }
-ul, ol { padding-left: 20pt; }
-li { margin-bottom: 4pt; }
-img { display: block; margin: 12pt auto; }
+ul, ol { padding-left: 18pt; margin: 4pt 0; }
+li { margin-bottom: 3pt; }
 a { color: #2e7d32; }
-p { margin: 6pt 0; }
 """
 
 html = f"""<!DOCTYPE html>
@@ -246,13 +319,12 @@ html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-# Write HTML (useful for debugging)
-html_path = os.path.join(DOCS, "USER_MANUAL.html")
-with open(html_path, "w", encoding="utf-8") as f:
+# Write HTML for inspection
+with open(os.path.join(DOCS, "USER_MANUAL.html"), "w", encoding="utf-8") as f:
     f.write(html)
 
 # Generate PDF
 from weasyprint import HTML as WP
 pdf_path = os.path.join(DOCS, "USER_MANUAL.pdf")
 WP(string=html, base_url=DOCS).write_pdf(pdf_path)
-print(f"PDF written to {pdf_path}")
+print(f"PDF written → {pdf_path}  ({os.path.getsize(pdf_path)//1024} KB)")
