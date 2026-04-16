@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PresentationTimer</string>
+    <string name="set_your_time">Set your time</string>
+    <string name="on_track">On track 🟢</string>
+    <string name="hurry_up">Hurry up! 🟡</string>
+    <string name="almost_out">Almost out of time! 🔴</string>
+    <string name="times_up">Time\'s up! ⏰</string>
+    <string name="paused">Paused ⏸</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_resume">Resume</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_reset">Reset</string>
+</resources>

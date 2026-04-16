@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Semantic timer colors -->
+    <color name="bg_green">#2E7D32</color>
+    <color name="bg_yellow">#F9A825</color>
+    <color name="bg_red">#C62828</color>
+
+    <color name="arc_green">#A5D6A7</color>
+    <color name="arc_yellow">#FFF176</color>
+    <color name="arc_red">#EF9A9A</color>
+
+    <color name="text_on_color">#FFFFFF</color>
+    <color name="text_on_yellow">#212121</color>
+
+    <!-- App bar / system -->
+    <color name="colorPrimary">#2E7D32</color>
+    <color name="colorPrimaryVariant">#1B5E20</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#F9A825</color>
+    <color name="colorSecondaryVariant">#F57F17</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="ic_launcher_background">#1B5E20</color>
+</resources>
