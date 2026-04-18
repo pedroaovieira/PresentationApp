@@ -20,7 +20,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var repository: PhasesRepository
     private var flashAnimation: AlphaAnimation? = null
     private var auraColorAnimator: ValueAnimator? = null
+    private var bgAnimator: ValueAnimator? = null
     private var currentAuraColor: Int = Color.parseColor("#5AF0B3")
+    private var currentBgColor: Int = Color.parseColor("#131313")
 
     private val settingsLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -113,6 +115,18 @@ class MainActivity : AppCompatActivity() {
             currentAuraColor = targetColor
         }
 
+        // Animate root background: dark in setup, phase colour when running
+        val targetBg = if (state.phase == TimerPhase.SETUP) Color.parseColor("#131313") else targetColor
+        if (targetBg != currentBgColor) {
+            bgAnimator?.cancel()
+            bgAnimator = ValueAnimator.ofArgb(currentBgColor, targetBg).apply {
+                duration = 500
+                addUpdateListener { anim -> binding.root.setBackgroundColor(anim.animatedValue as Int) }
+                start()
+            }
+            currentBgColor = targetBg
+        }
+
         if (state.isFlashing) startFlashAnimation() else stopFlashAnimation()
 
         binding.tvPhaseLabel.text = when (state.phase) {
@@ -183,5 +197,6 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         stopFlashAnimation()
         auraColorAnimator?.cancel()
+        bgAnimator?.cancel()
     }
 }
