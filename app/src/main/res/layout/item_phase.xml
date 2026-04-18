@@ -4,18 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="12dp"
+    android:layout_marginHorizontal="14dp"
     android:layout_marginVertical="6dp"
+    app:cardBackgroundColor="@color/surface_container_high"
     app:cardCornerRadius="12dp"
-    app:cardElevation="2dp">
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="18dp">
 
-        <!-- Name + delete row -->
+        <!-- Name + delete -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,12 +28,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Phase name">
+                android:hint="Phase name"
+                app:hintTextColor="@color/outline"
+                app:boxStrokeColor="@color/outline_variant"
+                app:boxBackgroundColor="@color/surface_container">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="@color/on_surface"
+                    android:fontFamily="@font/manrope" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
@@ -43,7 +49,7 @@
                 android:src="@android:drawable/ic_delete"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Delete phase"
-                android:tint="#D32F2F" />
+                android:tint="#EF5350" />
 
         </LinearLayout>
 
@@ -53,13 +59,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Active when ≥ X% remaining (0–100)">
+            android:hint="Active when ≥ X% remaining (0–100)"
+            app:hintTextColor="@color/outline"
+            app:boxStrokeColor="@color/outline_variant"
+            app:boxBackgroundColor="@color/surface_container">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etThreshold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:maxLength="3" />
+                android:maxLength="3"
+                android:textColor="@color/on_surface"
+                android:fontFamily="@font/manrope" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Message -->
@@ -68,28 +79,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:hint="Message shown during this phase">
+            android:hint="Message shown during this phase"
+            app:hintTextColor="@color/outline"
+            app:boxStrokeColor="@color/outline_variant"
+            app:boxBackgroundColor="@color/surface_container">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColor="@color/on_surface"
+                android:fontFamily="@font/manrope" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Color label -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Background color"
-            android:textSize="12sp"
-            android:textColor="#757575" />
+            android:layout_marginTop="14dp"
+            android:text="BACKGROUND COLOR"
+            android:textSize="9sp"
+            android:fontFamily="@font/manrope"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"
+            android:textColor="@color/outline" />
 
         <!-- Color swatches -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:scrollbars="none">
 
             <LinearLayout

@@ -1,5 +1,6 @@
 package org.pedrov.presentationtimer
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: TimerViewModel by viewModels()
     private lateinit var repository: PhasesRepository
     private var flashAnimation: AlphaAnimation? = null
+    private var auraColorAnimator: ValueAnimator? = null
+    private var currentAuraColor: Int = Color.parseColor("#5AF0B3")
 
     private val settingsLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.state.observe(this) { state ->
             updateTimerDisplay(state)
-            updateBackground(state)
+            updateAccentColor(state)
             updateButtons(state)
         }
     }
@@ -90,34 +93,49 @@ class MainActivity : AppCompatActivity() {
         binding.progressArc.progress = progress
     }
 
-    private fun updateBackground(state: TimerState) {
-        val colorHex = state.activePhase?.colorHex ?: "#2E7D32"
-        val bgColor = Color.parseColor(colorHex)
+    private fun updateAccentColor(state: TimerState) {
+        val colorHex = state.activePhase?.colorHex ?: "#5AF0B3"
+        val targetColor = Color.parseColor(colorHex)
 
-        binding.rootLayout.setBackgroundColor(bgColor)
-
-        val textColor = if (isColorDark(bgColor)) Color.WHITE else Color.parseColor("#212121")
-        binding.tvTimer.setTextColor(textColor)
-        binding.tvPhaseLabel.setTextColor(textColor)
-        binding.progressArc.setIndicatorColor(lightenColor(bgColor, 0.4f))
+        // Animate the aura bar colour cross-fade (500ms per design spec)
+        if (targetColor != currentAuraColor) {
+            auraColorAnimator?.cancel()
+            auraColorAnimator = ValueAnimator.ofArgb(currentAuraColor, targetColor).apply {
+                duration = 500
+                addUpdateListener { anim ->
+                    val c = anim.animatedValue as Int
+                    binding.auraBar.setBackgroundColor(c)
+                    binding.progressArc.setIndicatorColor(c)
+                    binding.tvPhaseLabel.setTextColor(c)
+                }
+                start()
+            }
+            currentAuraColor = targetColor
+        }
 
         if (state.isFlashing) startFlashAnimation() else stopFlashAnimation()
 
         binding.tvPhaseLabel.text = when (state.phase) {
-            TimerPhase.SETUP -> "Set your time"
-            TimerPhase.RUNNING -> state.activePhase?.message ?: ""
-            TimerPhase.PAUSED -> "Paused \u23F8"
-            TimerPhase.FINISHED -> "Time's up! \u23F0"
+            TimerPhase.SETUP    -> "READY"
+            TimerPhase.RUNNING  -> (state.activePhase?.message ?: "ON TRACK").uppercase()
+            TimerPhase.PAUSED   -> "PAUSED"
+            TimerPhase.FINISHED -> "TIME'S UP"
         }
     }
 
     private fun updateButtons(state: TimerState) {
         binding.btnSettings.visibility = if (state.phase == TimerPhase.SETUP) View.VISIBLE else View.GONE
 
+        // Show/hide timer area views
+        val timerVisible = if (state.phase == TimerPhase.SETUP) View.GONE else View.VISIBLE
+        binding.tvPhaseLabel.visibility = timerVisible
+        binding.tvTimer.visibility = timerVisible
+        binding.progressRow.visibility = timerVisible
+
         when (state.phase) {
             TimerPhase.SETUP -> {
                 binding.setupPanel.visibility = View.VISIBLE
-                binding.btnStart.text = "Start"
+                binding.btnStart.text = "INITIALIZE"
                 binding.btnStart.visibility = View.VISIBLE
                 binding.btnPause.visibility = View.GONE
                 binding.btnReset.visibility = View.GONE
@@ -130,7 +148,7 @@ class MainActivity : AppCompatActivity() {
             }
             TimerPhase.PAUSED -> {
                 binding.setupPanel.visibility = View.GONE
-                binding.btnStart.text = "Resume"
+                binding.btnStart.text = "▶  RESUME"
                 binding.btnStart.visibility = View.VISIBLE
                 binding.btnPause.visibility = View.GONE
                 binding.btnReset.visibility = View.VISIBLE
@@ -144,23 +162,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun isColorDark(color: Int): Boolean {
-        val luminance = (0.299 * Color.red(color) +
-                0.587 * Color.green(color) +
-                0.114 * Color.blue(color)) / 255.0
-        return luminance < 0.5
-    }
-
-    private fun lightenColor(color: Int, factor: Float): Int {
-        val r = (Color.red(color) + (255 - Color.red(color)) * factor).toInt().coerceIn(0, 255)
-        val g = (Color.green(color) + (255 - Color.green(color)) * factor).toInt().coerceIn(0, 255)
-        val b = (Color.blue(color) + (255 - Color.blue(color)) * factor).toInt().coerceIn(0, 255)
-        return Color.rgb(r, g, b)
-    }
-
     private fun startFlashAnimation() {
         if (flashAnimation != null) return
-        flashAnimation = AlphaAnimation(1f, 0.2f).apply {
+        flashAnimation = AlphaAnimation(1f, 0.15f).apply {
             duration = 600
             repeatMode = Animation.REVERSE
             repeatCount = Animation.INFINITE
@@ -178,5 +182,6 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         stopFlashAnimation()
+        auraColorAnimator?.cancel()
     }
 }

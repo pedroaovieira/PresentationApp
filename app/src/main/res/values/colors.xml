@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Semantic timer colors -->
-    <color name="bg_green">#2E7D32</color>
-    <color name="bg_yellow">#F9A825</color>
-    <color name="bg_red">#C62828</color>
+    <!-- ── Temporal Monolith Design System ──────────────────────────── -->
 
-    <color name="arc_green">#A5D6A7</color>
-    <color name="arc_yellow">#FFF176</color>
-    <color name="arc_red">#EF9A9A</color>
+    <!-- Surface hierarchy -->
+    <color name="background">#131313</color>
+    <color name="surface_container_lowest">#0E0E0E</color>
+    <color name="surface_container_low">#1C1B1B</color>
+    <color name="surface_container">#201F1F</color>
+    <color name="surface_container_high">#2A2A2A</color>
+    <color name="surface_container_highest">#353534</color>
 
-    <color name="text_on_color">#FFFFFF</color>
-    <color name="text_on_yellow">#212121</color>
+    <!-- Primary: mint green — "On Track" -->
+    <color name="primary">#5AF0B3</color>
+    <color name="on_primary">#003825</color>
+    <color name="primary_container">#34D399</color>
 
-    <!-- App bar / system -->
-    <color name="colorPrimary">#2E7D32</color>
-    <color name="colorPrimaryVariant">#1B5E20</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorSecondary">#F9A825</color>
-    <color name="colorSecondaryVariant">#F57F17</color>
-    <color name="colorOnSecondary">#000000</color>
+    <!-- Secondary: amber — "Hurry Up" -->
+    <color name="secondary">#FFB95F</color>
+    <color name="on_secondary">#472A00</color>
+
+    <!-- Tertiary: coral — "Time's Up" -->
+    <color name="tertiary">#FFCAC5</color>
+    <color name="error_color">#FFB4AB</color>
+
+    <!-- Text -->
+    <color name="on_surface">#E5E2E1</color>
+    <color name="on_surface_variant">#BBCAC0</color>
+    <color name="outline">#85948B</color>
+    <color name="outline_variant">#3C4A42</color>
+
+    <!-- App theme tokens -->
+    <color name="colorPrimary">#5AF0B3</color>
+    <color name="colorPrimaryVariant">#003825</color>
+    <color name="colorOnPrimary">#003825</color>
+    <color name="colorSecondary">#FFB95F</color>
+    <color name="colorSecondaryVariant">#472A00</color>
+    <color name="colorOnSecondary">#472A00</color>
     <color name="ic_launcher_background">#1B5E20</color>
 </resources>
