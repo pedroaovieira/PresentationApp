@@ -1,6 +1,6 @@
 # PresentationTimer — Android App
 
-A full-screen countdown timer built for presenters. The background colour tells you exactly where you stand — no squinting, no distractions.
+A full-screen countdown timer built for presenters. A coloured accent bar and progress indicator show exactly where you stand — no squinting, no distractions. Dark cinematic design that keeps the focus on the clock.
 
 ---
 
@@ -22,21 +22,24 @@ A full-screen countdown timer built for presenters. The background colour tells 
 |---|---|
 | Custom duration | Set hours, minutes, and seconds before starting |
 | Configurable phases | Define as many phases as you want, each with its own colour, message, and threshold |
-| Arc progress ring | Visual sweep shows time remaining at a glance |
+| Aura bar | 4dp coloured bar at the top cross-fades to the active phase colour |
+| Linear progress bar | Thin bar sweeps down showing time remaining at a glance |
+| Animated transitions | 500 ms colour cross-fade between phases |
 | Pause / Resume | Freeze the clock mid-presentation |
 | Reset | Return to setup at any time |
 | Screen always on | `FLAG_KEEP_SCREEN_ON` prevents display sleep |
-| Flash on finish | Screen flashes when time is up |
+| Flash on finish | Timer flashes when time is up |
+| Dark cinematic UI | Deep dark background (#131313), Space Grotesk + Manrope typography |
 
 ---
 
 ## Default Colour Phases
 
-| Phase | Trigger | Background | Message |
+| Phase | Trigger | Accent colour | Message |
 |---|---|---|---|
-| On track | ≥ 50% remaining | Dark green | On track 🟢 |
-| Hurry up | ≥ 20% remaining | Amber | Hurry up! 🟡 |
-| Almost done | ≥ 0% remaining | Dark red | Almost out of time! 🔴 |
+| On track | ≥ 50% remaining | Mint green (#5AF0B3) | On track |
+| Hurry up | ≥ 20% remaining | Amber (#FFB95F) | Hurry up! |
+| Almost done | ≥ 0% remaining | Coral (#FFCAC5) | Almost out of time! |
 
 All phases are fully configurable — see [User Manual](docs/USER_MANUAL.md).
 
@@ -47,7 +50,7 @@ All phases are fully configurable — see [User Manual](docs/USER_MANUAL.md).
 - **Kotlin** — 100%
 - **MVVM** with `ViewModel` + `LiveData`
 - **View Binding**
-- **Material Components** — `CircularProgressIndicator`, `MaterialButton`, `TextInputLayout`
+- **Material Components** — `LinearProgressIndicator`, `MaterialButton`, `TextInputLayout`, `CardView`
 - `CountDownTimer` for precise countdown
 - `SharedPreferences` + JSON for persistent phase settings
 
@@ -69,7 +72,7 @@ PresentationApp/
     ├── build.gradle           ← App module (SDK, dependencies)
     └── src/main/
         ├── AndroidManifest.xml
-        ├── java/com/presentationapp/
+        ├── java/org/pedrov/presentationtimer/
         │   ├── MainActivity.kt         ← UI controller
         │   ├── TimerViewModel.kt       ← Timer state & countdown logic
         │   ├── PhaseConfig.kt          ← Phase data model + JSON

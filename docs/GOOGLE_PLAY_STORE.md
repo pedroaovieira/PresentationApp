@@ -1,6 +1,6 @@
 # PresentationTimer — Google Play Store Submission Guide
 
-**App version:** 1.2.0  
+**App version:** 1.3.0  
 **Package name:** `org.pedrov.presentationtimer`  
 **Prepared:** April 2025
 
@@ -29,7 +29,7 @@ PresentationTimer
 
 ### Short Description
 ```
-Full-screen countdown timer with colour phases for presenters and speakers.
+Dark countdown timer with colour accent phases for presenters and speakers.
 ```
 *(75 characters — limit is 80)*
 
@@ -38,46 +38,49 @@ Full-screen countdown timer with colour phases for presenters and speakers.
 ```
 Stay on time, every time.
 
-PresentationTimer is a distraction-free countdown timer designed for speakers, lecturers, teachers, and panel hosts. The entire screen changes colour as your time runs out — so you can check your progress with a single glance, without interrupting your flow.
+PresentationTimer is a distraction-free countdown timer designed for speakers, lecturers, teachers, and panel hosts. A coloured accent bar and progress indicator change as your time runs out — so you can check your progress with a single glance, without interrupting your flow.
 
 ──────────────────────────────
 COLOUR PHASES
 ──────────────────────────────
-The screen shows a bold, full-screen colour that tells you exactly where you stand:
+A glowing accent bar at the top of the screen tells you exactly where you stand:
 
-• Green — you're on track
-• Yellow — time to pick up the pace
-• Red — almost out of time
+• Mint green — you're on track
+• Amber — time to pick up the pace
+• Coral — almost out of time
 
-All phases are fully customisable: change the colour, adjust the threshold (when each phase kicks in), and write your own message. Add as many phases as you like.
+All phases are fully customisable: change the colour, adjust the threshold (when each phase kicks in), and write your own message. Add as many phases as you like. Colour transitions animate smoothly so there's no jarring flash.
 
 ──────────────────────────────
 KEY FEATURES
 ──────────────────────────────
-• Full-screen colour display — visible from across the room
+• Cinematic dark design — deep dark background keeps focus on the clock
+• Coloured aura bar — 4 dp accent strip cross-fades to the active phase colour
+• Massive countdown display — readable from across the room
 • Custom duration — set hours, minutes, and seconds
-• Arc progress ring — visual sweep shows time consumed at a glance
+• Linear progress bar — thin indicator shows time remaining at a glance
 • Configurable phases — define any number of phases with custom colours, messages, and thresholds
+• Animated colour transitions — smooth 500 ms cross-fade between phases
 • Pause / Resume — freeze the clock mid-presentation
 • Reset — return to setup at any time
 • Screen always on — display never sleeps while timing
-• Flash on finish — screen flashes when time is up
+• Flash on finish — timer flashes when time is up
 • No ads, no internet required, no permissions needed
 
 ──────────────────────────────
 HOW IT WORKS
 ──────────────────────────────
 1. Enter your presentation duration (HH : MM : SS).
-2. Tap Start.
+2. Tap INITIALIZE.
 3. Place your phone where you can see it — face-up on the lectern, propped on the desk, or beside your notes.
-4. Glance at the colour whenever you need a time check.
+4. Glance at the aura bar colour whenever you need a time check.
 
 That's it. No fuss.
 
 ──────────────────────────────
 CUSTOMISE YOUR PHASES
 ──────────────────────────────
-Tap the gear icon → edit phase name, threshold %, message text, and background colour. Changes take effect immediately for your next timer.
+Tap the gear icon → edit phase name, threshold %, message text, and accent colour. Changes take effect immediately for your next timer.
 
 Perfect for:
 • Conference talks and keynotes
@@ -142,20 +145,20 @@ W, H = 1080, 2340
 
 | # | File | Screen |
 |---|---|---|
-| 1 | `screenshots/01_setup.png` | Setup — enter your time |
-| 2 | `screenshots/02_green.png` | Running — green (on track) phase |
-| 3 | `screenshots/03_yellow.png` | Running — yellow (hurry up) phase |
-| 4 | `screenshots/04_red.png` | Running — red (almost done) phase |
-| 5 | `screenshots/05_finished.png` | Time's up! screen |
+| 1 | `screenshots/01_setup.png` | Setup — "SET THE PACE" + INITIALIZE |
+| 2 | `screenshots/02_green.png` | Running — mint green aura (on track) |
+| 3 | `screenshots/03_yellow.png` | Running — amber aura (hurry up) |
+| 4 | `screenshots/04_red.png` | Running — coral aura (almost done) |
+| 5 | `screenshots/05_finished.png` | Time's up! — flashing timer |
 | 6 | `screenshots/06_settings.png` | Phase settings editor |
 | 7 | `screenshots/07_settings_add.png` | Adding a new phase |
 | 8 | `screenshots/08_about.png` | About screen |
 
 **Recommended screenshot order for the store listing:**
-1. Setup screen (shows simplicity)
-2. Green running (shows main feature)
-3. Yellow running (shows phase change)
-4. Red running (shows urgency)
+1. Setup screen (shows clean dark design)
+2. Green/mint running (shows main feature)
+3. Amber running (shows phase change)
+4. Coral running (shows urgency)
 5. Settings (shows customisation)
 6. Time's up (shows finish state)
 
@@ -163,10 +166,10 @@ W, H = 1080, 2340
 
 | Screenshot | Caption |
 |---|---|
-| Setup | Set your duration in seconds |
-| Green | Full-screen colour tells you where you stand |
-| Yellow | Time is running out — phase changes automatically |
-| Red | Almost done — visible from across the room |
+| Setup | Set your duration — clean dark interface |
+| Mint green | Coloured aura bar tells you where you stand |
+| Amber | Accent colour cross-fades as time runs down |
+| Coral | Almost done — visible at a glance |
 | Settings | Fully customise phases, colours and messages |
 | Time's up | Clear alert when your time is up |
 
@@ -270,8 +273,8 @@ For questions, contact: pvieira.uminho@gmail.com
 | Package name | `org.pedrov.presentationtimer` |
 | Minimum SDK | Android 8.0 (API 26) |
 | Target SDK | Android 14 (API 34) |
-| Version code | 2 |
-| Version name | 1.2.0 |
+| Version code | 3 |
+| Version name | 1.3.0 |
 | Screen orientation | Portrait only |
 | Architecture | Universal (arm64-v8a, armeabi-v7a, x86_64) |
 
@@ -364,17 +367,20 @@ android {
 ### Release
 - [ ] Create a new release in **Production** track
 - [ ] Upload signed `.aab` file
-- [ ] Enter release name: `1.2.0`
+- [ ] Enter release name: `1.3.0`
 - [ ] Enter release notes (what's new)
 - [ ] Review and roll out to 100%
 
 ### Release Notes (What's New)
 ```
-• Added About screen showing developer credits
-• Fully configurable timer phases — set your own colours, messages, and thresholds
-• Add or remove as many phases as you need
-• Arc progress ring for at-a-glance time remaining
-• Screen stays on automatically during presentation
+v1.3.0 — Temporal Monolith design
+• Complete visual redesign: deep dark theme (#131313 background)
+• New coloured aura bar replaces full-screen background colour changes
+• Smooth 500 ms animated colour transitions between phases
+• Massive Space Grotesk countdown typography
+• Linear progress bar with "REMAINING" label
+• Circular floating controls (pause / stop)
+• Space Grotesk + Manrope font system throughout
 ```
 
 ---
