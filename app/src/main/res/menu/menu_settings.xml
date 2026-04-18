@@ -9,5 +9,5 @@
         android:id="@+id/action_about"
         android:title="About"
         android:icon="@drawable/ic_info"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>

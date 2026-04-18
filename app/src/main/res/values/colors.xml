@@ -3,7 +3,7 @@
     <!-- ── Temporal Monolith Design System ──────────────────────────── -->
 
     <!-- Surface hierarchy -->
-    <color name="background">#131313</color>
+    <color name="background">#1A1A1A</color>
     <color name="surface_container_lowest">#0E0E0E</color>
     <color name="surface_container_low">#1C1B1B</color>
     <color name="surface_container">#201F1F</color>

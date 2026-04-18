@@ -22,7 +22,10 @@ class MainActivity : AppCompatActivity() {
     private var auraColorAnimator: ValueAnimator? = null
     private var bgAnimator: ValueAnimator? = null
     private var currentAuraColor: Int = Color.parseColor("#5AF0B3")
-    private var currentBgColor: Int = Color.parseColor("#131313")
+    private var currentBgColor: Int = Color.parseColor("#1A1A1A")
+
+    private val darkInk = Color.parseColor("#0D0D0D")
+    private val darkBg  = Color.parseColor("#1A1A1A")
 
     private val settingsLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -97,26 +100,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateAccentColor(state: TimerState) {
         val colorHex = state.activePhase?.colorHex ?: "#5AF0B3"
-        val targetColor = Color.parseColor(colorHex)
+        val phaseColor = Color.parseColor(colorHex)
+        val isActive = state.phase != TimerPhase.SETUP
 
-        // Animate the aura bar colour cross-fade (500ms per design spec)
-        if (targetColor != currentAuraColor) {
-            auraColorAnimator?.cancel()
-            auraColorAnimator = ValueAnimator.ofArgb(currentAuraColor, targetColor).apply {
-                duration = 500
-                addUpdateListener { anim ->
-                    val c = anim.animatedValue as Int
-                    binding.auraBar.setBackgroundColor(c)
-                    binding.progressArc.setIndicatorColor(c)
-                    binding.tvPhaseLabel.setTextColor(c)
-                }
-                start()
-            }
-            currentAuraColor = targetColor
-        }
-
-        // Animate root background: dark in setup, phase colour when running
-        val targetBg = if (state.phase == TimerPhase.SETUP) Color.parseColor("#131313") else targetColor
+        // Background: dark in setup, phase colour when active
+        val targetBg = if (isActive) phaseColor else darkBg
         if (targetBg != currentBgColor) {
             bgAnimator?.cancel()
             bgAnimator = ValueAnimator.ofArgb(currentBgColor, targetBg).apply {
@@ -125,6 +113,44 @@ class MainActivity : AppCompatActivity() {
                 start()
             }
             currentBgColor = targetBg
+        }
+
+        // Aura bar + progress: phase colour on dark bg; dark ink on phase-coloured bg
+        val targetAccent = if (isActive) darkInk else phaseColor
+        if (targetAccent != currentAuraColor) {
+            auraColorAnimator?.cancel()
+            auraColorAnimator = ValueAnimator.ofArgb(currentAuraColor, targetAccent).apply {
+                duration = 500
+                addUpdateListener { anim ->
+                    val c = anim.animatedValue as Int
+                    binding.auraBar.setBackgroundColor(c)
+                    binding.progressArc.setIndicatorColor(c)
+                }
+                start()
+            }
+            currentAuraColor = targetAccent
+        }
+
+        // Text and button tints: dark ink on phase bg, light on dark bg
+        val textColor  = if (isActive) darkInk else Color.parseColor("#E5E2E1")
+        val labelColor = if (isActive) darkInk else phaseColor
+        val appNameColor = if (isActive) darkInk else phaseColor
+        binding.tvTimer.setTextColor(textColor)
+        binding.tvPhaseLabel.setTextColor(labelColor)
+        binding.tvAppName.setTextColor(appNameColor)
+
+        // Buttons: dark tint when on phase-coloured background
+        val btnTint = if (isActive) darkInk else phaseColor
+        binding.btnPause.backgroundTintList =
+            android.content.res.ColorStateList.valueOf(btnTint)
+        if (state.phase != TimerPhase.SETUP) {
+            binding.btnStart.backgroundTintList =
+                android.content.res.ColorStateList.valueOf(darkInk)
+            binding.btnStart.setTextColor(phaseColor)
+        } else {
+            binding.btnStart.backgroundTintList =
+                android.content.res.ColorStateList.valueOf(phaseColor)
+            binding.btnStart.setTextColor(Color.parseColor("#003825"))
         }
 
         if (state.isFlashing) startFlashAnimation() else stopFlashAnimation()
