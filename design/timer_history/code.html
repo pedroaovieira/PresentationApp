@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#5b3800",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "surface-dim": "#131313",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-primary-container": "#00563b",
+                        "primary-container": "#34d399",
+                        "on-tertiary-container": "#9a0015",
+                        "secondary-fixed": "#ffddb8",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "inverse-primary": "#006c4b",
+                        "on-tertiary": "#68000a",
+                        "on-primary": "#003825",
+                        "surface-container-high": "#2a2a2a",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "on-primary-fixed-variant": "#005137",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#ee9800",
+                        "on-primary-fixed": "#002114",
+                        "primary-fixed-dim": "#45dfa4",
+                        "outline": "#85948b",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#bbcac0",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-container": "#201f1f",
+                        "primary": "#5af0b3",
+                        "on-tertiary-fixed": "#410004",
+                        "outline-variant": "#3c4a42",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "background": "#131313",
+                        "secondary": "#ffb95f",
+                        "tertiary-container": "#ffa29b",
+                        "primary-fixed": "#68fcbf",
+                        "surface-tint": "#45dfa4",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "tertiary": "#ffcac5",
+                        "on-secondary": "#472a00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#5af0b3] cursor-pointer hover:opacity-80 transition-opacity" data-icon="menu">menu</span>
+<span class="text-xl font-black tracking-tighter text-[#5af0b3] font-['Space_Grotesk']">TEMPORAL</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs font-bold text-[#E5E2E1]">HISTORY</span>
+<span class="material-symbols-outlined text-[#E5E2E1] cursor-pointer hover:opacity-80 transition-opacity" data-icon="settings">settings</span>
+</div>
+</div>
+<div class="bg-[#1C1B1B] h-[1px] w-full opacity-10"></div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-24 pb-32 px-6 max-w-2xl mx-auto w-full">
+<!-- Intentional Asymmetry Header -->
+<div class="mb-16">
+<p class="text-primary font-label text-[10px] uppercase tracking-[0.3em] mb-2">ARCHIVE</p>
+<h1 class="text-5xl font-headline font-bold tracking-tighter leading-none mb-4">Past <br/><span class="text-primary">Emanations</span></h1>
+<p class="text-outline text-sm font-body max-w-xs leading-relaxed">A chronological log of temporal allocations and presentation flow performance.</p>
+</div>
+<!-- History List -->
+<div class="space-y-12">
+<!-- Entry 1 -->
+<div class="group flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-label uppercase tracking-widest text-outline">OCT 24, 2023</span>
+<h3 class="text-2xl font-headline font-medium tracking-tight group-hover:text-primary transition-colors">Quarterly Review</h3>
+</div>
+<div class="text-right">
+<div class="text-2xl font-headline font-bold text-on-surface">45:02</div>
+<div class="text-[10px] font-label uppercase tracking-tighter text-primary">PERFECT FLOW</div>
+</div>
+</div>
+<!-- Spacer - The "No-Line" Rule separation -->
+<div class="h-[1px] bg-surface-container-low opacity-20"></div>
+<!-- Entry 2 -->
+<div class="group flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-label uppercase tracking-widest text-outline">OCT 21, 2023</span>
+<h3 class="text-2xl font-headline font-medium tracking-tight group-hover:text-primary transition-colors">Keynote Draft</h3>
+</div>
+<div class="text-right">
+<div class="text-2xl font-headline font-bold text-on-surface">18:54</div>
+<div class="text-[10px] font-label uppercase tracking-tighter text-secondary">NEAR LIMIT</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-[1px] bg-surface-container-low opacity-20"></div>
+<!-- Entry 3 -->
+<div class="group flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-label uppercase tracking-widest text-outline">OCT 15, 2023</span>
+<h3 class="text-2xl font-headline font-medium tracking-tight group-hover:text-primary transition-colors">Investor Pitch</h3>
+</div>
+<div class="text-right">
+<div class="text-2xl font-headline font-bold text-on-surface">12:00</div>
+<div class="text-[10px] font-label uppercase tracking-tighter text-primary">COMPLETED</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-[1px] bg-surface-container-low opacity-20"></div>
+<!-- Entry 4 -->
+<div class="group flex items-start justify-between opacity-60">
+<div class="space-y-1">
+<span class="text-xs font-label uppercase tracking-widest text-outline">OCT 12, 2023</span>
+<h3 class="text-2xl font-headline font-medium tracking-tight group-hover:text-primary transition-colors">Team Sync</h3>
+</div>
+<div class="text-right">
+<div class="text-2xl font-headline font-bold text-on-surface">62:15</div>
+<div class="text-[10px] font-label uppercase tracking-tighter text-error">OVERTIME</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-[1px] bg-surface-container-low opacity-20"></div>
+<!-- Entry 5 -->
+<div class="group flex items-start justify-between opacity-40">
+<div class="space-y-1">
+<span class="text-xs font-label uppercase tracking-widest text-outline">OCT 08, 2023</span>
+<h3 class="text-2xl font-headline font-medium tracking-tight group-hover:text-primary transition-colors">Workshop A</h3>
+</div>
+<div class="text-right">
+<div class="text-2xl font-headline font-bold text-on-surface">120:00</div>
+<div class="text-[10px] font-label uppercase tracking-tighter text-primary">STABLE</div>
+</div>
+</div>
+</div>
+<!-- Atmospheric Glassmorphism Card -->
+<div class="mt-20 p-8 rounded-xl bg-surface-bright/5 backdrop-blur-xl border border-outline-variant/10">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="analytics">analytics</span>
+<h4 class="font-headline font-bold text-lg">Weekly Aggregate</h4>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<p class="text-[10px] font-label uppercase tracking-widest text-outline mb-1">TOTAL TIME</p>
+<p class="text-3xl font-headline font-bold">04:18:51</p>
+</div>
+<div>
+<p class="text-[10px] font-label uppercase tracking-widest text-outline mb-1">SESSIONS</p>
+<p class="text-3xl font-headline font-bold">12</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#131313]/90 backdrop-blur-xl shadow-[0_-8px_32px_rgba(90,240,179,0.04)]">
+<div class="flex justify-around items-center px-8 h-20 w-full">
+<!-- Add -->
+<div class="flex flex-col items-center justify-center text-[#85948B] w-12 h-12 hover:text-[#5af0b3] transition-colors scale-95 active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</div>
+<!-- Timer -->
+<div class="flex flex-col items-center justify-center text-[#85948B] w-12 h-12 hover:text-[#5af0b3] transition-colors scale-95 active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="timer">timer</span>
+</div>
+<!-- History (Active) -->
+<div class="flex flex-col items-center justify-center bg-[#5af0b3] text-[#003825] rounded-full w-12 h-12 mb-2 scale-95 active:scale-90 duration-200 cursor-pointer shadow-[0_0_20px_rgba(90,240,179,0.4)]">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+</div>
+</div>
+</nav>
+<!-- Aura Progress Bar (Design System Spec) -->
+<div class="fixed top-0 left-0 w-full h-[4px] z-[60] bg-primary"></div>
+</body></html>

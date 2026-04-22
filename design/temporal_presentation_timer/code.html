@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Temporal - Presentation Timer Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#5b3800",
+                    "surface-container-highest": "#353534",
+                    "on-tertiary-fixed-variant": "#930013",
+                    "surface-dim": "#131313",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-fixed": "#2a1700",
+                    "on-primary-container": "#00563b",
+                    "primary-container": "#34d399",
+                    "on-tertiary-container": "#9a0015",
+                    "secondary-fixed": "#ffddb8",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "inverse-primary": "#006c4b",
+                    "on-tertiary": "#68000a",
+                    "on-primary": "#003825",
+                    "surface-container-high": "#2a2a2a",
+                    "error-container": "#93000a",
+                    "on-surface": "#e5e2e1",
+                    "tertiary-fixed-dim": "#ffb3ad",
+                    "on-primary-fixed-variant": "#005137",
+                    "on-error": "#690005",
+                    "surface-container-low": "#1c1b1b",
+                    "secondary-container": "#ee9800",
+                    "on-primary-fixed": "#002114",
+                    "primary-fixed-dim": "#45dfa4",
+                    "outline": "#85948b",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-lowest": "#0e0e0e",
+                    "error": "#ffb4ab",
+                    "on-surface-variant": "#bbcac0",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container": "#201f1f",
+                    "primary": "#5af0b3",
+                    "on-tertiary-fixed": "#410004",
+                    "outline-variant": "#3c4a42",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e5e2e1",
+                    "surface-variant": "#353534",
+                    "background": "#131313",
+                    "secondary": "#ffb95f",
+                    "tertiary-container": "#ffa29b",
+                    "primary-fixed": "#68fcbf",
+                    "surface-tint": "#45dfa4",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "inverse-surface": "#e5e2e1",
+                    "surface": "#131313",
+                    "tertiary": "#ffcac5",
+                    "on-secondary": "#472a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Progress Aura (Visual Anchor) -->
+<div class="fixed top-0 left-0 w-full h-[4px] bg-surface-container-low z-[60]">
+<div class="h-full w-1/3 bg-primary"></div>
+</div>
+<!-- TopAppBar -->
+<header class="bg-[#131313] fixed top-0 w-full z-50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-[#5af0b3] hover:opacity-80 transition-opacity duration-500 ease-in-out">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs font-bold text-[#E5E2E1]">Setup Session</span>
+</div>
+<div class="text-xl font-black tracking-tighter text-[#5af0b3]">TEMPORAL</div>
+<button class="text-[#5af0b3] hover:opacity-80 transition-opacity duration-500 ease-in-out">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-[#1C1B1B] h-[1px] w-full opacity-10"></div>
+</header>
+<main class="min-h-screen pt-24 pb-32 px-6 flex flex-col items-center justify-center">
+<!-- Scale Shock Header -->
+<div class="w-full max-w-4xl mb-12 text-center">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline mb-4 block">Session Duration</span>
+<h1 class="font-headline font-black text-6xl md:text-8xl tracking-tighter leading-none text-on-surface">
+                SET THE <span class="text-primary">PACE</span>
+</h1>
+</div>
+<!-- The Monolith Picker Container -->
+<div class="relative w-full max-w-2xl flex flex-col items-center">
+<!-- Tonal Layering for Depth -->
+<div class="w-full bg-surface-container-low rounded-xl p-8 md:p-12 flex flex-col items-center gap-12">
+<!-- Time Selection Grid -->
+<div class="flex items-center justify-center gap-4 md:gap-8 select-none">
+<!-- Minutes Column -->
+<div class="flex flex-col items-center">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-6">MINUTES</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-8xl md:text-[10rem] font-bold tracking-tighter text-on-surface leading-none">25</span>
+<div class="flex flex-col gap-2">
+<button class="p-1 text-primary hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-4xl">expand_less</span>
+</button>
+<button class="p-1 text-primary hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-4xl">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Separator -->
+<div class="font-headline text-6xl md:text-8xl font-thin text-outline-variant pt-8">:</div>
+<!-- Seconds Column -->
+<div class="flex flex-col items-center">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline mb-6">SECONDS</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-8xl md:text-[10rem] font-bold tracking-tighter text-on-surface/40 leading-none">00</span>
+<div class="flex flex-col gap-2 opacity-40">
+<button class="p-1 text-on-surface hover:bg-on-surface/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-4xl">expand_less</span>
+</button>
+<button class="p-1 text-on-surface hover:bg-on-surface/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-4xl">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Controls Layout: Bento Style -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+<!-- Toggle: Warning Alerts -->
+<div class="bg-surface-container-high rounded-xl p-6 flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div>
+<h3 class="font-label font-bold text-sm text-on-surface">Warning Alerts</h3>
+<p class="text-xs text-outline">Notify 5m before end</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-on-primary rounded-full ml-auto"></div>
+</div>
+</div>
+<!-- Toggle: Dark Mode Transition -->
+<div class="bg-surface-container-high rounded-xl p-6 flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-label font-bold text-sm text-on-surface">Haptic Pulse</h3>
+<p class="text-xs text-outline">Tactile rhythm markers</p>
+</div>
+</div>
+<div class="w-12 h-6 bg-surface-container-highest rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-outline rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Action -->
+<button class="mt-12 group relative">
+<div class="absolute -inset-4 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<div class="relative bg-primary text-on-primary px-16 py-6 rounded-full font-headline font-bold text-lg uppercase tracking-widest flex items-center gap-4 transition-transform active:scale-95">
+                    Initialize Monolith
+                    <span class="material-symbols-outlined font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</button>
+</div>
+<!-- Secondary Ghost Actions -->
+<div class="mt-16 flex gap-12">
+<button class="text-outline hover:text-primary transition-colors text-xs font-label uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span>
+                Load Last Preset
+            </button>
+<button class="text-outline hover:text-primary transition-colors text-xs font-label uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+                Reset Defaults
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#131313]/90 backdrop-blur-xl shadow-[0_-8px_32px_rgba(90,240,179,0.04)]">
+<div class="flex justify-around items-center px-8 h-20 w-full">
+<!-- Active Navigation -->
+<button class="flex flex-col items-center justify-center bg-[#5af0b3] text-[#003825] rounded-full w-12 h-12 mb-2 scale-95 active:scale-90 duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<!-- Inactive Navigation -->
+<button class="flex flex-col items-center justify-center text-[#85948B] w-12 h-12 hover:text-[#5af0b3] transition-colors scale-95 active:scale-90 duration-200">
+<span class="material-symbols-outlined">timer</span>
+</button>
+<!-- Inactive Navigation -->
+<button class="flex flex-col items-center justify-center text-[#85948B] w-12 h-12 hover:text-[#5af0b3] transition-colors scale-95 active:scale-90 duration-200">
+<span class="material-symbols-outlined">history</span>
+</button>
+</div>
+</nav>
+</body></html>

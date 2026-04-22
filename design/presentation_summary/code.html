@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#5b3800",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "surface-dim": "#131313",
+                        "surface-bright": "#3a3939",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-primary-container": "#00563b",
+                        "primary-container": "#34d399",
+                        "on-tertiary-container": "#9a0015",
+                        "secondary-fixed": "#ffddb8",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "inverse-primary": "#006c4b",
+                        "on-tertiary": "#68000a",
+                        "on-primary": "#003825",
+                        "surface-container-high": "#2a2a2a",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "on-primary-fixed-variant": "#005137",
+                        "on-error": "#690005",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary-container": "#ee9800",
+                        "on-primary-fixed": "#002114",
+                        "primary-fixed-dim": "#45dfa4",
+                        "outline": "#85948b",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#bbcac0",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-container": "#201f1f",
+                        "primary": "#5af0b3",
+                        "on-tertiary-fixed": "#410004",
+                        "outline-variant": "#3c4a42",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#e5e2e1",
+                        "surface-variant": "#353534",
+                        "background": "#131313",
+                        "secondary": "#ffb95f",
+                        "tertiary-container": "#ffa29b",
+                        "primary-fixed": "#68fcbf",
+                        "surface-tint": "#45dfa4",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "inverse-surface": "#e5e2e1",
+                        "surface": "#131313",
+                        "tertiary": "#ffcac5",
+                        "on-secondary": "#472a00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timer-glow {
+            text-shadow: 0 0 40px rgba(90, 240, 179, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Progress Aura (Design System 5) -->
+<div class="fixed top-0 left-0 w-full h-1 bg-primary z-[60]"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131313]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-screen-xl mx-auto">
+<button class="text-[#5af0b3] hover:opacity-80 transition-opacity duration-500 ease-in-out">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-xl font-black tracking-tighter text-[#5af0b3] font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs font-bold">TEMPORAL</div>
+<button class="text-[#5af0b3] hover:opacity-80 transition-opacity duration-500 ease-in-out">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-[#1C1B1B] h-[1px] w-full opacity-10"></div>
+</header>
+<main class="min-h-screen pt-24 pb-32 px-6 flex flex-col items-center justify-center max-w-screen-md mx-auto">
+<!-- Summary Context -->
+<div class="w-full text-center mb-12">
+<span class="font-label text-[10px] uppercase tracking-[0.4em] text-primary opacity-60 mb-2 block">PRESENTATION COMPLETE</span>
+<h1 class="font-headline text-4xl md:text-5xl font-bold text-on-surface tracking-tight">Session Summary</h1>
+</div>
+<!-- The Monolith Data (Bento Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+<!-- Primary Metric: Total Elapsed -->
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-12 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline mb-4">TOTAL ELAPSED TIME</span>
+<div class="font-headline text-7xl md:text-9xl font-bold text-primary timer-glow leading-none">
+                    18:42
+                </div>
+<div class="mt-4 flex items-center gap-2 text-primary/60">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-label text-xs tracking-widest uppercase">PRECISION TRACKED</span>
+</div>
+</div>
+<!-- Metric: Time Remaining -->
+<div class="bg-surface-container rounded-xl p-8 flex flex-col justify-between border-b-2 border-transparent hover:border-primary/20 transition-all duration-500">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline">TIME REMAINING</span>
+<div class="mt-6">
+<div class="font-headline text-4xl font-semibold text-on-surface">01:18</div>
+<p class="text-on-surface-variant text-sm mt-2 font-light">Available buffer unused</p>
+</div>
+</div>
+<!-- Metric: Rating -->
+<div class="bg-surface-container rounded-xl p-8 flex flex-col justify-between border-b-2 border-transparent hover:border-secondary/20 transition-all duration-500">
+<span class="font-label text-[10px] uppercase tracking-[0.3em] text-outline">PERFORMANCE RATING</span>
+<div class="mt-6">
+<div class="font-headline text-3xl font-semibold text-secondary">Excellent Timing</div>
+<div class="flex gap-1 mt-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+</div>
+<!-- Atmospheric Visual Bridge -->
+<div class="md:col-span-2 relative h-48 w-full rounded-xl overflow-hidden mt-2">
+<img class="w-full h-full object-cover grayscale opacity-40 mix-blend-luminosity" data-alt="Abstract cinematic visualization of digital flow and light particles in deep space dark green and black theme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5Y2PRy6tfBj4R5vM9Gxf2M4XJX9pMmKe7IjCNpfDiXCw_4JcAvVYtBdoRoYAmbpP9vO1fFi_G2szeruk0cUiE5y4YsQJZ0zzaj7sWOsZzPmuVdveSSUjlqFWZiq3hZm8Xuj3ipTKzKlAv9Sh0fSAjgCP2H2mxNYKV7J1dNOlS-NJJBRIr_fzDWi5G9Z9tWUSs9xR45aoUU233-pY7gyEqMHenTt4E3G3qCdXVduSjGKKqbyMgqPX8wLLA-xk8iSGpppbbc6dhqXIo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+<p class="font-label text-sm text-on-surface max-w-xs italic font-light">"Time is the longest distance between two places."</p>
+<span class="text-[10px] uppercase tracking-[0.2em] text-outline mt-2">— Tennessee Williams</span>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="mt-12 w-full max-w-xs">
+<button class="w-full py-5 bg-primary text-on-primary font-bold rounded-full text-sm uppercase tracking-[0.2em] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-[0_20px_40px_rgba(90,240,179,0.1)]">
+                Done
+            </button>
+<button class="w-full mt-4 py-3 text-outline hover:text-on-surface transition-colors duration-300 text-xs uppercase tracking-widest font-semibold">
+                Share Statistics
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on this success/summary screen per shell logic) -->
+<!-- Suppressed to prioritize the Summary Canvas focus -->
+<!-- Subtle Background Element -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+</body></html>
