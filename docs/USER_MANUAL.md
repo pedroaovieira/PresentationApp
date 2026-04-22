@@ -1,6 +1,6 @@
 # Kairos Timer — User Manual
 
-**Version 1.4.0**
+**Version 1.4.1**
 
 ---
 
@@ -80,7 +80,7 @@ When you first open the app you see the **setup screen**:
 
 | Element | Description |
 |---|---|
-| **TEMPORAL** (top centre) | App brand name |
+| **KAIROS TIMER** (top centre) | App brand name |
 | Gear icon (top-right) | Opens the phase settings |
 | **SET THE PACE** headline | Large editorial heading |
 | **HH : MM : SS** fields | Enter your desired duration (all fields default to 00) |

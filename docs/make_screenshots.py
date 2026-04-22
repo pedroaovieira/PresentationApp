@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate mock screenshots of Kairos Timer — Temporal Monolith design v1.4.0."""
+"""Generate mock screenshots of Kairos Timer v1.4.1."""
 
 from PIL import Image, ImageDraw, ImageFont
 import os, math
@@ -114,8 +114,8 @@ def screen_setup():
     status_bar(d, BG_DARK, ON_SURFACE_VAR)
     aura_bar(d, PRIMARY)
 
-    # TEMPORAL brand
-    cw(d, "TEMPORAL", 56, sg(13), PRIMARY)
+    # Kairos Timer brand
+    cw(d, "KAIROS TIMER", 56, sg(13), PRIMARY)
     # Gear icon top-right
     d.ellipse([W-54, 48, W-14, 88], fill=SURFACE_HIGH)
     at(d, "⚙", W-34, 56, mn(20), ON_SURFACE_VAR, anchor="ma")
@@ -176,8 +176,8 @@ def screen_running(bg_color, label, time_str, progress, filename, paused=False):
     status_bar(d, bg_color, DARK_INK)
     aura_bar(d, DARK_INK)
 
-    # TEMPORAL brand
-    cw(d, "TEMPORAL", 56, sg(13), DARK_INK)
+    # Kairos Timer brand
+    cw(d, "KAIROS TIMER", 56, sg(13), DARK_INK)
 
     # Phase label
     cw(d, "PAUSED" if paused else label, 112, mnb(18), DARK_INK)
@@ -248,7 +248,7 @@ def screen_finished():
     status_bar(d, bg, DARK_INK)
     aura_bar(d, DARK_INK)
 
-    cw(d, "TEMPORAL",  56,  sg(13), DARK_INK)
+    cw(d, "KAIROS TIMER",  56,  sg(13), DARK_INK)
     cw(d, "TIME'S UP", 112, mnb(18), DARK_INK)
     cw(d, "00:00",     175, sg(88), blend(DARK_INK, 0.7))
 
@@ -400,8 +400,8 @@ def screen_about():
     d.line([ic_cx, ic_cy-4, ic_cx, ic_cy-20], fill=PRIMARY, width=3)
     d.line([ic_cx, ic_cy-4, ic_cx+14, ic_cy+6], fill=PRIMARY, width=3)
 
-    cw(d, "TEMPORAL",                              238, sg(28),  PRIMARY)
-    cw(d, "Version 1.4.0",                         278, mn(13),  OUTLINE)
+    cw(d, "KAIROS TIMER",                          238, sg(28),  PRIMARY)
+    cw(d, "Version 1.4.1",                         278, mn(13),  OUTLINE)
     cw(d, "Full-screen countdown for presenters",  302, mn(13),  ON_SURFACE_VAR)
 
     d.rectangle([W//2-24, 334, W//2+24, 336], fill=OUTLINE_VAR)
