@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: Kairos Timer
+description: Full-screen countdown timer for presenters
+url: https://pedroaovieira.github.io/KairosTimer
+markdown: kramdown
