@@ -1,4 +1,4 @@
-package org.pedrov.presentationtimer
+package org.pedrov.kairostimer
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
-import org.pedrov.presentationtimer.databinding.ItemPhaseBinding
+import org.pedrov.kairostimer.databinding.ItemPhaseBinding
 
 val PRESET_COLORS = listOf(
     "#5AF0B3", "#34D399", "#FFB95F",

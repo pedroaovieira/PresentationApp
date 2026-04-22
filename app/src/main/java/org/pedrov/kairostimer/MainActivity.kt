@@ -1,4 +1,4 @@
-package org.pedrov.presentationtimer
+package org.pedrov.kairostimer
 
 import android.animation.ValueAnimator
 import android.content.Intent
@@ -15,7 +15,7 @@ import android.view.animation.Animation
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import org.pedrov.presentationtimer.databinding.ActivityMainBinding
+import org.pedrov.kairostimer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

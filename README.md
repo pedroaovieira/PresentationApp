@@ -1,4 +1,4 @@
-# PresentationTimer — Android App
+# Kairos Timer — Android App
 
 A full-screen countdown timer built for presenters. A coloured accent bar and progress indicator show exactly where you stand — no squinting, no distractions. Dark cinematic design that keeps the focus on the clock.
 
@@ -59,7 +59,7 @@ All phases are fully configurable — see [User Manual](docs/USER_MANUAL.md).
 ## Project Structure
 
 ```
-PresentationApp/
+KairosTimer/
 ├── build.gradle               ← Top-level Gradle config
 ├── settings.gradle
 ├── gradle.properties
@@ -72,7 +72,7 @@ PresentationApp/
     ├── build.gradle           ← App module (SDK, dependencies)
     └── src/main/
         ├── AndroidManifest.xml
-        ├── java/org/pedrov/presentationtimer/
+        ├── java/org/pedrov/kairostimer/
         │   ├── MainActivity.kt         ← UI controller
         │   ├── TimerViewModel.kt       ← Timer state & countdown logic
         │   ├── PhaseConfig.kt          ← Phase data model + JSON
@@ -104,11 +104,11 @@ PresentationApp/
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/pedroaovieira/PresentationApp.git
-   cd PresentationApp
+   git clone https://github.com/pedroaovieira/KairosTimer.git
+   cd KairosTimer
    ```
 
-2. Open in **Android Studio** → File → Open → select the `PresentationApp` folder.
+2. Open in **Android Studio** → File → Open → select the `KairosTimer` folder.
 
 3. Let Gradle sync complete.
 
@@ -122,21 +122,21 @@ PresentationApp/
 export JAVA_HOME=<path-to-jdk17>
 export ANDROID_HOME=<path-to-android-sdk>
 ./gradlew assembleDebug
-# Output: app/build/outputs/apk/debug/PresentationTimer.apk
+# Output: app/build/outputs/apk/debug/KairosTimer.apk
 ```
 
 ### Install directly via ADB
 
 ```bash
-adb install app/build/outputs/apk/debug/PresentationTimer.apk
+adb install app/build/outputs/apk/debug/KairosTimer.apk
 ```
 
 ---
 
 ## Install on Your Phone (without a computer)
 
-1. Go to [Releases](https://github.com/pedroaovieira/PresentationApp/releases/latest)
-2. Download `PresentationTimer.apk`
+1. Go to [Releases](https://github.com/pedroaovieira/KairosTimer/releases/latest)
+2. Download `KairosTimer.apk`
 3. On your phone: **Settings → Apps → Install unknown apps** → enable for your browser
 4. Tap the downloaded file and follow the prompts
 

@@ -1,7 +1,7 @@
-# PresentationTimer — Google Play Store Submission Guide
+# Kairos Timer — Google Play Store Submission Guide
 
 **App version:** 1.3.0  
-**Package name:** `org.pedrov.presentationtimer`  
+**Package name:** `org.pedrov.kairostimer`  
 **Prepared:** April 2025
 
 ---
@@ -23,7 +23,7 @@
 
 ### App Name
 ```
-PresentationTimer
+Kairos Timer
 ```
 *(17 characters — limit is 30)*
 
@@ -38,7 +38,7 @@ Dark countdown timer with colour accent phases for presenters and speakers.
 ```
 Stay on time, every time.
 
-PresentationTimer is a distraction-free countdown timer designed for speakers, lecturers, teachers, and panel hosts. A coloured accent bar and progress indicator change as your time runs out — so you can check your progress with a single glance, without interrupting your flow.
+Kairos Timer is a distraction-free countdown timer designed for speakers, lecturers, teachers, and panel hosts. A coloured accent bar and progress indicator change as your time runs out — so you can check your progress with a single glance, without interrupting your flow.
 
 ──────────────────────────────
 COLOUR PHASES
@@ -215,11 +215,11 @@ Google Play **requires a privacy policy URL** for all apps. Publish a privacy po
 
 ---
 
-**PresentationTimer — Privacy Policy**
+**Kairos Timer — Privacy Policy**
 
 *Last updated: April 2025*
 
-**PresentationTimer** ("the App") is developed by Pedro Vieira ("Developer").
+**Kairos Timer** ("the App") is developed by Pedro Vieira ("Developer").
 
 **Data Collection**
 
@@ -248,7 +248,7 @@ For questions, contact: pvieira.uminho@gmail.com
 ---
 
 **Where to host the privacy policy:**
-- Create a GitHub Pages site for the repo (`pedroaovieira.github.io/PresentationApp/privacy`)
+- Create a GitHub Pages site for the repo (`pedroaovieira.github.io/KairosTimer/privacy`)
 - Or use a free service like [privacypolicygenerator.info](https://privacypolicygenerator.info)
 - Or add a `docs/privacy_policy.md` and enable GitHub Pages on the repo
 
@@ -270,7 +270,7 @@ For questions, contact: pvieira.uminho@gmail.com
 
 | Field | Value |
 |---|---|
-| Package name | `org.pedrov.presentationtimer` |
+| Package name | `org.pedrov.kairostimer` |
 | Minimum SDK | Android 8.0 (API 26) |
 | Target SDK | Android 14 (API 34) |
 | Version code | 3 |
@@ -342,7 +342,7 @@ android {
 
 ### Play Console — Create New App
 - [ ] Go to **All apps → Create app**
-- [ ] App name: `PresentationTimer`
+- [ ] App name: `Kairos Timer`
 - [ ] Default language: English (United States)
 - [ ] App or game: App
 - [ ] Free or paid: Free
@@ -385,4 +385,4 @@ v1.3.0 — Temporal Monolith design
 
 ---
 
-*This document was prepared with Claude.ai (Anthropic) — github.com/pedroaovieira/PresentationApp*
+*This document was prepared with Claude.ai (Anthropic) — github.com/pedroaovieira/KairosTimer*

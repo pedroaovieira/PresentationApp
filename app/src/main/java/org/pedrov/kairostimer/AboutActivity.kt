@@ -1,11 +1,11 @@
-package org.pedrov.presentationtimer
+package org.pedrov.kairostimer
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import org.pedrov.presentationtimer.databinding.ActivityAboutBinding
+import org.pedrov.kairostimer.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
 

@@ -314,7 +314,7 @@ html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>PresentationTimer — User Manual</title>
+<title>Kairos Timer — User Manual</title>
 <style>{css}</style>
 </head>
 <body>

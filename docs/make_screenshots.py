@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate mock screenshots of PresentationTimer — Temporal Monolith design v1.4.0."""
+"""Generate mock screenshots of Kairos Timer — Temporal Monolith design v1.4.0."""
 
 from PIL import Image, ImageDraw, ImageFont
 import os, math

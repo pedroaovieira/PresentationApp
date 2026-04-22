@@ -1,4 +1,4 @@
-package org.pedrov.presentationtimer
+package org.pedrov.kairostimer
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.pedrov.presentationtimer.databinding.ActivitySettingsBinding
+import org.pedrov.kairostimer.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
 

@@ -7,10 +7,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PresentationApp">
+        android:theme="@style/Theme.KairosTimer">
 
         <activity
-            android:name="org.pedrov.presentationtimer.MainActivity"
+            android:name="org.pedrov.kairostimer.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
@@ -21,15 +21,15 @@
         </activity>
 
         <activity
-            android:name="org.pedrov.presentationtimer.SettingsActivity"
+            android:name="org.pedrov.kairostimer.SettingsActivity"
             android:exported="false"
-            android:parentActivityName="org.pedrov.presentationtimer.MainActivity"
+            android:parentActivityName="org.pedrov.kairostimer.MainActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="org.pedrov.presentationtimer.AboutActivity"
+            android:name="org.pedrov.kairostimer.AboutActivity"
             android:exported="false"
-            android:parentActivityName="org.pedrov.presentationtimer.SettingsActivity" />
+            android:parentActivityName="org.pedrov.kairostimer.SettingsActivity" />
 
     </application>
 

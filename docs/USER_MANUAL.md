@@ -1,4 +1,4 @@
-# PresentationTimer — User Manual
+# Kairos Timer — User Manual
 
 **Version 1.4.0**
 
@@ -28,7 +28,7 @@
 
 ## 1. Overview
 
-**PresentationTimer** is a full-screen countdown timer designed for speakers and presenters. When you start the timer, the entire screen floods with the active phase colour — mint green, amber, or coral — giving you an unmistakable at-a-glance cue visible from across a room.
+**Kairos Timer** is a full-screen countdown timer designed for speakers and presenters. When you start the timer, the entire screen floods with the active phase colour — mint green, amber, or coral — giving you an unmistakable at-a-glance cue visible from across a room.
 
 A thin aura bar at the top of the screen, a live percentage readout, and a linear progress bar all update smoothly as time passes. A breathing halo effect pulses behind the countdown digits while the timer is running, making it easy to tell at a glance that everything is active.
 
@@ -41,8 +41,8 @@ Out of the box there are three phases (mint green → amber → coral), but you 
 ### From GitHub Releases (recommended)
 
 1. On your Android phone, open the browser and go to:  
-   **https://github.com/pedroaovieira/PresentationApp/releases/latest**
-2. Tap **PresentationTimer.apk** to download it.
+   **https://github.com/pedroaovieira/KairosTimer/releases/latest**
+2. Tap **KairosTimer.apk** to download it.
 3. When prompted, allow your browser to install unknown apps:  
    **Settings → Apps → Special app access → Install unknown apps → [your browser] → Allow**
 4. Tap the downloaded file in the notification shade or in Downloads.
@@ -51,7 +51,7 @@ Out of the box there are three phases (mint green → amber → coral), but you 
 ### From the command line (developer)
 
 ```bash
-adb install app/build/outputs/apk/debug/PresentationTimer.apk
+adb install app/build/outputs/apk/debug/KairosTimer.apk
 ```
 
 > **Requirements:** Android 8.0 (API 26) or higher.
@@ -60,7 +60,7 @@ adb install app/build/outputs/apk/debug/PresentationTimer.apk
 
 ## 3. Quick Start
 
-1. Open **PresentationTimer** on your phone.
+1. Open **Kairos Timer** on your phone.
 2. Enter your presentation duration — hours, minutes, seconds — or tap a **quick preset** (5 / 15 / 25 / 45 min).
 3. Tap **INITIALIZE**.
 4. Put the phone face-up on the lectern or prop it where you can see it.
@@ -248,11 +248,11 @@ The About screen shows:
 
 | Item | Details |
 |---|---|
-| App name and version | PresentationTimer, current version |
+| App name and version | Kairos Timer, current version |
 | Tagline | Short description of the app |
 | Developer | Pedro Vieira — App Developer |
 | AI Partner | Claude.ai by Anthropic — AI Development Partner |
 | Website | [pedrov.org](https://pedrov.org) |
 | License | Open Source · MIT License |
 
-This app was built collaboratively by **Pedro Vieira** and **Claude.ai** (Anthropic's AI assistant). The source code is freely available at [github.com/pedroaovieira/PresentationApp](https://github.com/pedroaovieira/PresentationApp). More from the developer at [pedrov.org](https://pedrov.org).
+This app was built collaboratively by **Pedro Vieira** and **Claude.ai** (Anthropic's AI assistant). The source code is freely available at [github.com/pedroaovieira/KairosTimer](https://github.com/pedroaovieira/KairosTimer). More from the developer at [pedrov.org](https://pedrov.org).

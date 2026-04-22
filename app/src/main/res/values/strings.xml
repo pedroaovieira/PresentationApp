@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PresentationTimer</string>
+    <string name="app_name">Kairos Timer</string>
     <string name="set_your_time">Set your time</string>
     <string name="on_track">On track 🟢</string>
     <string name="hurry_up">Hurry up! 🟡</string>

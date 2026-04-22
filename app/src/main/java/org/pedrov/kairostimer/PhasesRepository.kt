@@ -1,4 +1,4 @@
-package org.pedrov.presentationtimer
+package org.pedrov.kairostimer
 
 import android.content.Context
 

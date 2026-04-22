@@ -1,4 +1,4 @@
-# PresentationTimer — Planning
+# Kairos Timer — Planning
 
 Future features and development ideas.
 
@@ -82,28 +82,19 @@ The About screen hardcodes both the app version string and the copyright year. B
 
 ---
 
-### App Name
+### ✅ App Name *(completed 2026-04-22)*
 
-The current name "PresentationTimer" is functional but generic. "TEMPORAL" (the in-app brand shown on screen) is already more distinctive and memorable — worth considering as the official name.
+Renamed from **PresentationTimer** to **Kairos Timer**. "Kairos" is the Greek concept of the opportune moment — fitting for a presenter's tool. The "Timer" suffix aids Play Store discoverability.
 
-**Questions to settle**
-- Should the app name match the on-screen brand (`TEMPORAL`) for consistency?
-- Is "TEMPORAL" too abstract for discoverability on the Play Store?
-- Alternative directions: a name that evokes the presenter experience rather than the tool itself
-
-**Candidate names to explore**
-- **Temporal** — already used in-app; clean, distinctive, slightly abstract
-- **Podium** — evokes the presenter context
-- **Cue** — short, implies a stage/performance signal
-- **Pace** — echoes the "SET THE PACE" headline already in the UI
-- **Spotlight** — suggests being on stage
-
-**What a name change touches**
-- `applicationId` in `build.gradle` (package rename)
-- App label in `AndroidManifest.xml`
-- Play Store listing title and description
-- GitHub repo name / README
-- `docs/` references and user manual
+**What was changed**
+- App label in `strings.xml`
+- `applicationId` + `namespace` in `app/build.gradle` → `org.pedrov.kairostimer`
+- APK output filename → `KairosTimer.apk`
+- Source package directory renamed to `kairostimer/`
+- All Kotlin package declarations and imports updated
+- `AndroidManifest.xml` activity names updated
+- README, PLANNING, USER_MANUAL, GOOGLE_PLAY_STORE docs updated
+- GitHub repository renamed to `KairosTimer`
 
 ---
 
@@ -116,5 +107,5 @@ The current name "PresentationTimer" is functional but generic. "TEMPORAL" (the 
 
 ---
 
-*Last updated: 2026-04-19*
+*Last updated: 2026-04-22*
 
